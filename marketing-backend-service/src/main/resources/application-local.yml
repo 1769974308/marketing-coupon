@@ -3,15 +3,15 @@ spring:
 #    url: jdbc:mysql://10.39.10.107:3306/lk-p-marketing?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8&allowMultiQueries=true
 #    username: root
 #    password: 123456
-    url: jdbc:mysql://localhost:3306/cptest?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8&allowMultiQueries=true
-    username: root
-    password: 602231903
+    url: jdbc:mysql://120.46.151.254:13306/coupon?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8&allowMultiQueries=true
+    username: coupon
+    password: coupon
     driver-class-name: com.mysql.jdbc.Driver
   redis:
     database: 2 # Database index used by the connection factory.
-    host: localhost
-    password:
-    port: 6379
+    host: 120.46.151.254
+    password: '!1Qaz@2Wsx'
+    port: 16379
     pool:
       use: true
       max-active: 20
@@ -23,7 +23,7 @@ dubbo:
     owner: bill
     logger: slf4j
   registry:
-    address: zookeeper://localhost:2181
+    address: zookeeper://120.46.151.254:2181
     protocol: zookeeper
     check: false
     subscribe: true

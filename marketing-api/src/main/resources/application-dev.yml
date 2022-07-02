@@ -6,7 +6,7 @@ dubbo:
     owner: bill
     logger: slf4j
   registry:
-    address: zookeeper://localhost:2181
+    address: zookeeper://120.46.151.254:2181
     protocol: zookeeper
     check: false
     subscribe: true

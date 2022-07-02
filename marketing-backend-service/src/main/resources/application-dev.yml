@@ -3,18 +3,18 @@ spring:
 #    url: jdbc:mysql://10.39.10.107:3306/lk-p-marketing?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8&allowMultiQueries=true
 #    username: root
 #    password: 123456
-    url: jdbc:mysql://10.19.248.200:30057/lk-p-marketing?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8&allowMultiQueries=true
-    username: cloudAdmin
-    password: Ab123..
+    url: jdbc:mysql://120.46.151.254:13306/coupon?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2b8&allowMultiQueries=true
+    username: coupon
+    password: coupon
     driver-class-name: com.mysql.jdbc.Driver
   redis:
     database: 2 # Database index used by the connection factory.
-    cluster:
-      nodes:
-        - 192.168.1.18:30001  #10.19.131.109:30001
-#    host: localhost
-#    port: 6379
-    password:
+#    cluster:
+#      nodes:
+#        - 192.168.1.18:30001  #10.19.131.109:30001
+    host: 120.46.151.254
+    port: 16379
+    password: '!1Qaz@2Wsx'
     pool:
       use: true
       max-active: 5000
@@ -27,7 +27,7 @@ dubbo:
     owner: bill
     logger: slf4j
   registry:
-    address: zookeeper://127.0.0.1:2181 #10.19.248.200:29225
+    address: zookeeper://120.46.151.254:2181 #10.19.248.200:29225
     protocol: zookeeper
     check: false
     subscribe: true

@@ -2,6 +2,7 @@ flyway:
 #  locations: classpath:db/migration,db-dev/migration
   locations: classpath:db/migration
   baseline-on-migrate: true
+  enabled: true
 
 
 # not working, moved to jenkin config
@@ -9,9 +10,9 @@ spring:
   application:
     name: marketing-rds
   datasource:
-    url: jdbc:mysql://localhost:3306/lk-p-marketing?characterEncoding=utf-8&autoReconnect=true&useSSL=false
-    username: root
-    password: root123
+    url: jdbc:mysql://120.46.151.254:13306/coupon?characterEncoding=utf-8&autoReconnect=true&useSSL=false
+    username: coupon
+    password: coupon
 
    #数据库连接池配置
     max-active: 200
