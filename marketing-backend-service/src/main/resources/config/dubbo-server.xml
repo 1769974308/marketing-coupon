@@ -23,6 +23,8 @@
     <bean id="couponManagementInterfaceImpl" class="lk.project.marketing.backend.service.rpc.CouponManagementInterfaceImpl"/>
     <bean id="accountRuleManagementInterfaceImpl" class="lk.project.marketing.backend.service.rpc.AccountRuleManagementInterfaceImpl"/>
     <bean id="couponSummaryManagementInterfaceImpl" class="lk.project.marketing.backend.service.rpc.CouponSummaryManagementInterfaceImpl"/>
+    <bean id="activityManagementInterfaceImpl" class="lk.project.marketing.backend.service.rpc.ActivityManagementInterfaceImpl"/>
+    <bean id="promotionRuleManagementInterfaceImpl" class="lk.project.marketing.backend.service.rpc.PromotionRuleManagementInterfaceImpl"/>
 
     <!--暴露接口-->
     <dubbo:service interface="lk.project.marketing.client.rpc.CouponManagementInterface"
@@ -31,4 +33,8 @@
                    ref="accountRuleManagementInterfaceImpl" loadbalance="${dubbo.service.loadbalance}"/>
     <dubbo:service interface="lk.project.marketing.client.rpc.CouponSummaryManagementInterface"
                    ref="couponSummaryManagementInterfaceImpl" loadbalance="${dubbo.service.loadbalance}"/>
+    <dubbo:service interface="lk.project.marketing.client.rpc.ActivityManagementInterface"
+                   ref="activityManagementInterfaceImpl" loadbalance="${dubbo.service.loadbalance}"/>
+    <dubbo:service interface="lk.project.marketing.client.rpc.PromotionRuleManagementInterface"
+                   ref="promotionRuleManagementInterfaceImpl" loadbalance="${dubbo.service.loadbalance}"/>
 </beans>

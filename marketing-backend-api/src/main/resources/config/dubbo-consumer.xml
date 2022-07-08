@@ -16,4 +16,6 @@
     <dubbo:reference id="CouponManagementInterface" interface="lk.project.marketing.client.rpc.CouponManagementInterface"/>
     <dubbo:reference id="AccountRuleManagementInterface" interface="lk.project.marketing.client.rpc.AccountRuleManagementInterface"/>
     <dubbo:reference id="CouponSummaryManagementInterface" interface="lk.project.marketing.client.rpc.CouponSummaryInterface"/>
+    <dubbo:reference id="ActivityManagementInterface" interface="lk.project.marketing.client.rpc.ActivityManagementInterface"/>
+    <dubbo:reference id="PromotionRuleManagementInterface" interface="lk.project.marketing.client.rpc.PromotionRuleManagementInterface"/>
 </beans>
