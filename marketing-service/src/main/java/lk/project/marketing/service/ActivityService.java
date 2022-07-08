@@ -20,8 +20,12 @@ public interface ActivityService {
         Date startDate = activePromotion.getActivityStart();
         Date endDate = activePromotion.getActivityEnd();
 
-        if (startDate!=null&&startDate.after(currentDate)) return false;
-        if (endDate!=null&&endDate.before(currentDate)) return false;
+        if (startDate!=null&&startDate.after(currentDate)) {
+            return false;
+        }
+        if (endDate!=null&&endDate.before(currentDate)) {
+            return false;
+        }
         return true;
 
     }

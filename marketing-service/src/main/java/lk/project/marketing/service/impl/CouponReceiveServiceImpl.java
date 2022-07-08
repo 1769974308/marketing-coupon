@@ -62,11 +62,17 @@ public class CouponReceiveServiceImpl implements CouponReceiveService {
     @Override
     public CouponReceiveBo produceCoupon(CouponReceiveReqBo couponReceiveReqBo, MemberBo memberReqBo) {
 
+        // 校验活动ID
         Long activityId = couponReceiveReqBo.getActivityId();
-        if (activityId==null) throw new BusinessException( BusinessErrorCodeEnum.EMPTY_PROMOTION_ACTIVITY);
-
+        if (activityId==null) {
+            throw new BusinessException( BusinessErrorCodeEnum.EMPTY_PROMOTION_ACTIVITY);
+        }
+        // 根据促销活动ID获取促销活动
         PromotionActivity activePromotion = activityRepository.getActivityById(activityId);
-        if (activePromotion==null) throw new BusinessException(BusinessErrorCodeEnum.NO_ACTIVE_PROMOTION);
+        if (activePromotion==null) {
+            throw new BusinessException(BusinessErrorCodeEnum.NO_ACTIVE_PROMOTION);
+        }
+        // 当前是否活动发券有效期间校验
         if  (!ActivityService.verifyActivityPeriod(activePromotion)) {
             throw new BusinessException(BusinessErrorCodeEnum.NOT_MATCHED_ACTIVITY_RULE);
         }

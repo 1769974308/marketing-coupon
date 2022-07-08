@@ -15,6 +15,7 @@
         <module>marketing-rds</module>
         <module>marketing-backend-service</module>
         <module>marketing-backend-api</module>
+        <module>marketing-test</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

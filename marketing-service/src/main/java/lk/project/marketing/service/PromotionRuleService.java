@@ -45,12 +45,12 @@ public interface PromotionRuleService {
 
         if (CollectionUtils.isEmpty(rules)) {
             return true;
-        }
-        else {
+        } else {
             Map<String, Object> memberFilterMap;
             Map<String, Object> skuFilterMap;
             Map<String, Object> orderFilterMap;
             try {
+                //使用反射把对象转换成Map<属性名，属性值> 作为规则表达式中的参数替换时的值
                 memberFilterMap = PromotionRuleMatch.buildFilterMap(memberBo);
                 skuFilterMap = PromotionRuleMatch.buildFilterMap(orderItem);
                 orderFilterMap = PromotionRuleMatch.buildFilterMap(orderBo);
@@ -66,7 +66,9 @@ public interface PromotionRuleService {
                  * 用户适用对象条件匹配
                  */
                 if (StringUtils.isNotEmpty(rule.getUserCondition())) {
-                    if (CollectionUtils.isEmpty(memberFilterMap)) continue;
+                    if (CollectionUtils.isEmpty(memberFilterMap)) {
+                        continue;
+                    }
                     try {
                         if (!PromotionRuleMatch.execJsonExpression(rule.getUserCondition(), memberFilterMap)){
                             continue;
@@ -80,7 +82,9 @@ public interface PromotionRuleService {
                  * 商品适用范围条件匹配
                  */
                 if (StringUtils.isNotEmpty(rule.getSkuCondition())) {
-                    if (CollectionUtils.isEmpty(skuFilterMap)) continue;
+                    if (CollectionUtils.isEmpty(skuFilterMap)) {
+                        continue;
+                    }
                     try {
                         if (!PromotionRuleMatch.execJsonExpression(rule.getSkuCondition(), skuFilterMap)){
                             continue;
@@ -94,7 +98,9 @@ public interface PromotionRuleService {
                  * 订单适用范围条件匹配
                  */
                 if (StringUtils.isNotEmpty(rule.getOrderCondition())) {
-                    if (CollectionUtils.isEmpty(orderFilterMap)) continue;
+                    if (CollectionUtils.isEmpty(orderFilterMap)) {
+                        continue;
+                    }
                     try{
                         if (!PromotionRuleMatch.execJsonExpression(rule.getOrderCondition(), orderFilterMap)){
                             continue;

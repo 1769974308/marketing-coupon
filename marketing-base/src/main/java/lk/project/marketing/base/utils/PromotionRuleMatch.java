@@ -42,7 +42,9 @@ public class PromotionRuleMatch {
         boolean result = true;
         for (Map.Entry<String, String> me : expressionMap.entrySet()) {
             result = (boolean) execExpression(me.getValue(), values);
-            if (!result) break;
+            if (!result) {
+                break;
+            }
         }
         return result;
 
@@ -50,7 +52,9 @@ public class PromotionRuleMatch {
 
     public static <T> Map<String, Object> buildFilterMap(T instance) throws IllegalAccessException {
 
-        if (instance == null) return null;
+        if (instance == null) {
+            return null;
+        }
 
         Map<String, Object> filterMap = new HashMap<>();
         Class filterClass = instance.getClass();
