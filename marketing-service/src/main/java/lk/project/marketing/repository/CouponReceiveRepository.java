@@ -133,8 +133,9 @@ public class CouponReceiveRepository extends ServiceImpl<CouponReceiveMapper,Cou
             if(couponReceive==null){
                 return false;
             }
-
+            //保存领取优惠券记录
             insert(couponReceive);
+            //保存领取优惠券记录明细
             List<CouponReceiveDetail> couponReceiveDetailList = couponReceiveBo.getCouponReceiveDetails();
             if(!CollectionUtils.isEmpty(couponReceiveDetailList)){
                 couponReceiveDetailList.stream()
@@ -143,7 +144,7 @@ public class CouponReceiveRepository extends ServiceImpl<CouponReceiveMapper,Cou
                             couponReceiveDetailRepository.insert(o);
                         });
             }
-
+            //保存领取优惠券汇总
             CouponSummary userCouponSummaryInfo = couponSummaryRepository.getUserCouponSummaryInfo(
                     couponReceive.getUserId(), couponReceive.getCouponId());
             if(userCouponSummaryInfo==null){

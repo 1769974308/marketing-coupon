@@ -142,6 +142,7 @@ public class CouponConsumeServiceImpl implements CouponConsumeService {
                                                 OrderBo orderReqBo,
                                                 OrderItemBo orderItemReqBo){
 
+        //查询促销活动规则
         List<PromotionRule> promotionRules = promotionRuleRepository.getPromotionRuleListByActivityId(activityId);
 
         //过滤无商品使用范围匹配条件的券
@@ -203,18 +204,19 @@ public class CouponConsumeServiceImpl implements CouponConsumeService {
                                                            OrderBo orderReqBo,
                                                            OrderItemBo orderItemReqBo,
                                                            Long couponId) {
+        //校验用户信息
         if (StringUtils.isBlank(memberReqBo.getUserId()) && StringUtils.isBlank(memberReqBo.getUserCode())) {
             throw new BusinessException(BusinessErrorCodeEnum.EMPTY_USER_BASIC_INFO);
         }
-
+        //校验订单信息
         if (orderReqBo != null && StringUtils.isBlank(orderReqBo.getOrderId())) {
             throw new BusinessException(BusinessErrorCodeEnum.EMPTY_ORDER_INFO);
         }
-
+        //校验订单项信息
         if (orderItemReqBo != null && StringUtils.isBlank(orderItemReqBo.getSkuId())) {
             throw new BusinessException(BusinessErrorCodeEnum.EMPTY_ORDER_ITEM_INFO);
         }
-
+        //查询用户领取优惠券记录
         List<CouponReceive> couponReceiveList = couponReceiveRepository.getUserCouponReceiveList(memberReqBo.getUserId(),
                 memberReqBo.getUserCode(), couponId);
 
@@ -222,7 +224,7 @@ public class CouponConsumeServiceImpl implements CouponConsumeService {
         if (CollectionUtils.isEmpty(couponReceiveList)) {
             return Collections.emptyList();
         }
-
+        // 按照促销活动ID分组
         Map<Long,List<CouponReceive>> couponReceiveByActivityMap =
                 couponReceiveList.stream()
                         .filter(o->(o.getActivityId()!=null
